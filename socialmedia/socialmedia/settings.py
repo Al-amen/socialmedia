@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'core'
+    'core',
+    'django_cleanup.apps.CleanupConfig',
 
 ]
 
@@ -52,6 +53,11 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    
+    
+
+
+    
 ]
 
 ROOT_URLCONF = 'socialmedia.urls'
@@ -124,6 +130,18 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [STATIC_DIR,]
 MEDIA_ROOT = MEDIA_DIR
 MEDIA_URL = 'media/'
+
+APPEND_SLASH = True
+LOGIN_URL = '/signin/'
+LOGIN_REDIRECT_URL = '/' 
+
+# Session settings
+#SESSION_ENGINE = 'django.contrib.sessions.backends.db'  # Default: Use database for session storage
+
+# Authentication backends
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+]
 
 
 # Default primary key field type
